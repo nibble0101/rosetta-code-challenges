@@ -28,4 +28,14 @@ function letterFrequency(txt) {
   
     return product
   }
+//Rosetta Code: Hash from two arrays
+
+function arrToObj (keys, vals) {
+  const  obj = {}
+  keys.forEach((v, i) => {
+    obj[v] = vals[i];
+  })
+  return obj;
+}
+
   
