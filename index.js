@@ -322,3 +322,28 @@ function getDateFormats() {
   return arr;
 }
 
+//Rosetta Code: Date manipulation
+//Solution is incomplete
+function add12Hours(dateString) {
+  const arr = dateString.split(' ');
+  const [
+          month, 
+          date,
+          year, 
+          time, 
+          zone
+          ] = arr;
+   const hour = parseInt(time);
+   const minutes = parseInt(time.split(':')[1]);
+   const dateTime = new Date()
+}
+const d = "March 7 2009 7:30pm EST"
+console.log(d.split(' '))
+
+//Rosetta Code: Last Friday of each month
+//Incomplete challenge
+
+function lastFriday(year, month) {
+  const d = new Date(year, month)
+  // The number of days in a month can be got by getting date.getDate() of the following month at day 0
+}
