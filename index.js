@@ -88,5 +88,30 @@ function factorial(n){
   return sum;
 }
 
+//Rosetta Code: Sum multiples of 3 or 5 or both.
+// This solution is inefficient
 
-  
+function sumMults(n) {
+  let mult  = [], 
+      sum = 0,
+      max = Math.floor(n/3),
+      i = 1;
+      
+
+  for(i; i <= max; i++){
+      if(i * 3 < n){
+        if(!mult.includes(i * 3)){
+          mult.push(i * 3);
+          sum += i * 3;
+        }
+      };
+      if(i * 5 < n){
+        if(!mult.includes(i * 5)){
+          mult.push(i * 5);
+          sum += i * 5;
+        }
+      };
+  };
+  return sum;
+};
+
