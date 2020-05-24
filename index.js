@@ -64,5 +64,29 @@ function LCM(A) {
  return A[0]
 }
 
+//Rosetta Code: Left factorials
+
+function leftFactorial(n) {
+  if(n < 0){
+    throw new Error(`Expected ${n} to be postive.`);  
+  };
+  if(!n){
+    return n;
+  };
+  
+  const f = []; // f = [0!, 1!, 2!, ..., (n-1)!] 
+  n = n - 1;   // !n = 0! + 1! + 2! + ... + (n - 1)!
+ 
+function factorial(n){
+    if(!n){
+      return f[n] = 1;
+    };
+     return f[n] = factorial(n - 1) * n;
+  }
+  factorial(n);
+  const sum = f.reduce((acc, curr) => acc + curr);
+  return sum;
+}
+
 
   
