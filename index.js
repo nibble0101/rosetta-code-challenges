@@ -125,4 +125,22 @@ function sum(a, b) {
   return sum;
 }
 
+//Rosetta Code: Date format
+function getDateFormats() {
+  const date = new Date(), arr = [];
+  const days = [
+                  'Sunday',
+                  'Monday', 
+                  'Tuesday', 
+                  'Wednesday',
+                  'Thursday',
+                  'Friday',
+                  'Saturday'
+              ]
+  const str = date.toString().split(' ');
+  //You can use template literal
+  arr[0] = str[3] + '-' + (date.getMonth() + 1) + '-' + str[2];
+  arr[1] = days[date.getDay()] + ', ' + str[1] + ' ' + str[2] + ', ' + str[3];
+  return arr;
+}
 
