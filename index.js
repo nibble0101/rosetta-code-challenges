@@ -37,5 +37,32 @@ function arrToObj (keys, vals) {
   })
   return obj;
 }
+//Rosetta Code: Least common multiple
+
+//Euclidean Algorithm
+
+function LCM(A) {
+  if(A.length < 2){
+    return new Error('There must be atleast 2 numbers!')
+  }
+  A.sort((a, b) => a - b);
+  const gcf = (a, b) => {
+    if(!a){
+      return b
+    }
+    return gcf(b % a, a)
+  }
+ const lcm = (a, b) =>  {
+    return (a * b)/gcf(a, b)
+ }
+ while(A.length > 1){
+   const a = Math.min(A[0], A[1])
+   const b = Math.max(A[0], A[1])
+   const l = lcm(a, b)
+   A.splice(0, 2, l)
+ }
+ return A[0]
+}
+
 
   
