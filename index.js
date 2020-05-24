@@ -1,3 +1,181 @@
+// Rosetta Code: Vector dot product
+function dotProduct(...arr){
+  let dotProd = [], arrLen = [], l = arr.length, tot = 0;
+  if(!arr.length){
+      return null;
+  }
+  for(let i = 0; i < l; i++){
+      for(let j = 0; j < arr[i].length; j++){
+          if(dotProd[j] === undefined){
+              dotProd.push(arr[i][j]);
+          }else{
+             dotProd[j] *= arr[i][j];
+
+          }
+         
+      }        
+      arrLen.push(arr[i].length);
+  }
+  if(arrLen.some((val) => {
+     return val != arrLen[0];
+  })){
+      return null;
+  }
+  for(let k = 0; k < dotProd.length; k++){
+      tot += dotProd[k];
+  }
+  return tot;   
+}
+// Rosetta Code: Factorial
+
+function factorial(n) {
+  return n === 1 || n === 0 ? 1: n * factorial(n - 1);
+ }
+// Rosetta Code: Factors of an integer   
+
+function factors(num) {
+  let arr = [];
+  if(num === 1){
+    return [1];
+  }
+  for(let i = 0; i <= Math.round(num/2); i++){
+  if(num % i === 0) {
+    arr.push(i);
+  }
+  }
+  arr.push(num);
+  return arr;
+}
+
+//Rosetta Code: Sum of squares
+function sumsq(array) {
+  return array.reduce((acc, cur) => {
+       return acc + cur ** 2;
+   }, 0);
+};
+
+//  Rosetta Code: Cumulative standard deviation
+
+function standardDeviation(arr) {
+  const n = arr.length;
+  const[tot, sqDev] = arr.reduce((acc, curr) => {
+      acc[0] += curr;
+      acc[1] += curr**2;
+      return acc;
+  }, [0,0]);
+
+  let ans = Math.pow(sqDev/n - (tot/n)**2, 0.5);
+  return Number.isInteger(ans) ? ans : Math.round(ans * 1000)/1000;
+};
+
+// Rosetta Code: Greatest common divisor
+
+function gcd(a, b) {
+  const commonFactors = [];
+  const min = Math.min(a, b);
+  const max = Math.max(a, b);
+  for(let i = 1; i <= min; i++){
+      if(min % i === 0 && max % i === 0){
+          commonFactors.push(i);
+      };
+  };
+  return commonFactors[commonFactors.length - 1];
+}
+
+// Rosetta Code: Evaluate binomial coefficients
+
+function binom(n, k) {
+  let num = 1, den = 1;
+  while(k > 0){
+      num *= (n - k + 1);
+      den *= k;
+      k--;
+  };
+  return num/den;
+}
+
+// Rosetta Code: Ethiopian multiplication
+
+function eth_mult(a, b) {
+  function halveInt(a){
+      let arr = [a];
+      while(a !== 1){
+          a = Math.floor(a/2);
+          arr.push(a);
+      };
+      return arr;
+  }
+   function doubleInt(b){
+       let arr = [b], l = halveInt(a).length;
+       for(let i = 1; i < l; i++){
+           b *= 2;
+           arr[i] = b; 
+       }
+      return arr; 
+  }
+   function isEven(arr1, arr2){
+       let prod = 0;
+       for(let i = 0; i < arr1.length; i++){
+           if(arr1[i] % 2 !== 0){
+               prod += arr2[i];
+           };
+       };
+       return prod;     
+  }
+
+  return isEven(halveInt(a), doubleInt(b))
+}
+
+
+// Rosetta Code: Ackermann function
+function ack(m, n) {
+  if(m === 0){
+    return n + 1;
+  }
+  else if(m > 0 && n === 0){
+    return ack(m - 1, 1);
+  }
+  else if(m > 0 && n > 0){
+    return ack(m - 1, ack(m, n - 1));
+  }
+}
+
+//Rosetta Code: Symmetric difference
+
+function symmetricDifference(A, B) {
+// Good luck!
+let diff = [];
+A.forEach((val) => {
+  if(!B.includes(val)){
+    diff.push(val)
+  }
+})
+B.forEach((val) => {
+  if(!A.includes(val)){
+    diff.push(val)
+  }
+})
+if(typeof diff[0] === "number"){
+     return diff.sort((a, b) => a - b)
+}
+else if(typeof diff[0] === "string")
+     return diff.sort()
+}
+// Rosetta Code: Day of the week
+function findXmasSunday(start, end) {
+let arr = [], date;
+for(start; start <= end; start++){
+    date = new Date(start, 11, 25);
+    if(date.getDay() === 0){
+        arr.push(start);
+    }
+}
+return arr;
+}
+
+
+
+
 
 // Rosetta Code: Count occurrences of a substring
 
