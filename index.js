@@ -384,6 +384,7 @@ function leapYear(year){
 }
 
 //Rosetta Code: Compare a list of strings
+// Challenge is not adequately described in FCC
 
 function allEqual(arr) {
   const l = arr.length; 
