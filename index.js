@@ -341,9 +341,14 @@ const d = "March 7 2009 7:30pm EST"
 console.log(d.split(' '))
 
 //Rosetta Code: Last Friday of each month
-//Incomplete challenge
 
 function lastFriday(year, month) {
-  const d = new Date(year, month)
-  // The number of days in a month can be got by getting date.getDate() of the following month at day 0
-}
+  const d = new Date(year, month, 0);
+  let i = d.getDate();
+  for(i; i > 0; i--){
+    d.setDate(i);
+    if(d.getDay() === 5){
+      return i;
+    };
+  };        
+};
