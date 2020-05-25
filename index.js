@@ -418,3 +418,40 @@ function azSorted(arr) {
   return true;
 };
 
+//Rosetta Code: Convert seconds to compound duration
+// This solution is inefficient
+
+function convertSeconds(sec) {
+  const week = 7 * 24 * 60 * 60,
+        day = 24 * 60 * 60,
+        hour = 60 * 60,
+        minute = 60,
+        seconds = 60;
+  const wk = Math.floor(sec/week);
+  const d = Math.floor((sec % week)/day);
+  const hr = Math.floor(((sec % week) % day)/hour);
+  const min = Math.floor((((sec % week) % day) % hour)/minute);
+        sec = (((sec % week) % day) % hour) % minute;
+  const arr = [
+                [wk, ' wk'], 
+                [d, ' d'], 
+                [hr, ' hr'], 
+                [min, ' min'], 
+                [sec, ' sec']
+              ];
+  let str = '', i = 0;
+       for(i; i < arr.length; i++){
+           if(!arr[i][0]){
+             arr.splice(i, 1);
+             i--;
+           };   
+       };
+       for(let i = 0; i < arr.length; i++){
+         if(i !== (arr.length - 1)){
+           str += ' ' + arr[i][0] + arr[i][1] + ',';
+           continue;
+         };
+         str += ' ' + arr[i][0] + arr[i][1];
+       }
+        return str.trim();
+};
