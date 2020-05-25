@@ -382,3 +382,38 @@ function isLeapYear(year) {
 function leapYear(year){
   return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 }
+
+//Rosetta Code: Compare a list of strings
+
+function allEqual(arr) {
+  const l = arr.length; 
+  for(let i = 0; i < l; i++){
+    for(let j = i + 1; j < l; j++){
+        if(arr[i] !== arr[j]){
+          return false;
+        };
+    };
+  };
+  return true;
+};
+
+function azSorted(arr) {
+  if(arr.length < 2){
+    return true;
+  };
+  const sortedArr = [...arr].sort();
+  let count = 0;
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] !== sortedArr[i]){
+      return false;
+    };
+    if(arr[0] === arr[i]){
+        count++; //Determines if all elements of the array are the same
+    };
+  };
+  if(count === arr.length){
+    return false;
+  };
+  return true;
+};
+
