@@ -352,3 +352,33 @@ function lastFriday(year, month) {
     };
   };        
 };
+
+//Rosetta Code: Leap year
+// Solution 1
+
+function isLeapYear(year) {
+  const d = new Date(year, 1, 29);
+  return d.getDate() === 29;
+};
+
+//Rosetta Code: Leap year
+// Solution 2
+
+function isLeapYear(year) {
+  if(!(year % 4)){
+    if(year % 100){
+       return true;
+    }
+    if(!(year % 400)){
+        return true;
+    }
+  }
+  return false;
+}
+
+//Rosetta Code: Leap year
+// Solution from https://stackoverflow.com/questions/16353211
+
+function leapYear(year){
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
