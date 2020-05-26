@@ -482,5 +482,19 @@ function sumDigits(n) {
           const c =  curr.charCodeAt(0);
           return prev +  (c < 58 ? +curr : c < 91 ? c - 55 : c -87);
       }, 0);
-}
+};
+
+// Rosetta Code: Define a primitive data type
+
+function Num(n) {
+  if(isNaN(n)){
+      throw new TypeError('Not a Number');
+  };
+  if(n < 1 || n > 10){
+      throw new TypeError('Out of range');
+  };
+      return new Number(n);
+};
+
+
 
