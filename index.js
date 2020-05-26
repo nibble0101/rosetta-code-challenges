@@ -543,4 +543,26 @@ function isHarshadOrNiven() {
   return res;
 }
 
+//Rosetta Code: Long multiplication
+// Solution is incomplete
+function mult(strNum1, strNum2) {
+  const a = strNum1, b = strNum2;
+  let r = 0, q = 0, arr = [];
+  for(let i = b.length - 1; i >= 0; i-- ){
+      const str = '';
+      for(let j = a.length - 1; j >= 0; j--){
+        const pdt = +b[i] * +a[j] + q;
+        r = pdt % 10;
+        q = Math.floor(pdt/10);
+        if(j === 0){
+            str = pdt + str;
+        }else{
+            str = r + str;
+        }
+      }
+      arr.push(str)
+  }
+ 
+}
+
 
