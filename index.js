@@ -455,3 +455,32 @@ function convertSeconds(sec) {
        }
         return str.trim();
 };
+
+//Rosetta Code: Sum digits of an integer
+
+function sumDigits(n) {      
+  let l = n.length, sum = 0;
+  for(let i = 0; i < l; i++){
+      const c = n.charCodeAt(i)
+      if(c < 58){
+          sum += +n[i];
+          continue;
+      }
+      if(c < 91 ){
+         sum += (c - 55);
+         continue;
+      }
+      sum += (c - 87);
+  }
+  return sum;
+}
+
+//Rosetta Code: Sum digits of an integer
+// Using ES6
+function sumDigits(n) {      
+    return n.split('').reduce((prev, curr) => {
+          const c =  curr.charCodeAt(0);
+          return prev +  (c < 58 ? +curr : c < 91 ? c - 55 : c -87);
+      }, 0);
+}
+
