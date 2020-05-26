@@ -506,5 +506,41 @@ function loopSimult(A) {
   });
 };
 
+//Rosetta Code: Harshad or Niven series
+// Optimise for general case
+function isHarshadOrNiven() {
+  const res = {
+    firstTwenty: [],
+    firstOver1000: undefined
+  };
+  let i = 1;
+  while(res.firstTwenty.length < 20){
+      if(i.toString().length < 2){
+          res.firstTwenty.push(i);
+          i++;
+          continue;
+      };
+      const sum = i.toString().split('').reduce((prev, curr) => {
+          return prev + +curr;
+      }, 0);
+      if(!(i % sum)){
+          res.firstTwenty.push(i);
+      };
+      i++;
+  };
+  i = 1001;
+  while(!res.firstOver1000){
+      const sum = i.toString().split('').reduce((prev, curr) => {
+          return prev + +curr;
+      }, 0);
+      if(!(i % sum)){
+          res.firstOver1000 = i;
+          break;
+      };
+      i++;
+  }
+
+  return res;
+}
 
 
