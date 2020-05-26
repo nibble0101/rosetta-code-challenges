@@ -496,5 +496,15 @@ function Num(n) {
       return new Number(n);
 };
 
+//Rosetta Code: Loop over multiple arrays simultaneously
+
+function loopSimult(A) {
+  return A[0].map((v, i)=> {
+      return A.reduce((prev, curr) => {
+          return prev + curr[i];
+        }, '');
+  });
+};
+
 
 
