@@ -628,6 +628,26 @@ function jortsort(array) {
   return true;
 };
 
+//Rosetta Code: Josephus problem
+// Solution incomplete
+
+function josephus(init, kill) {
+
+  const prisoners = new Array(init).fill(1).map((v, i) => {
+          return {N:i, isAlive: true};
+          });
+   
+      while(prisoners.length > 1){
+           for(let i = 0; i < prisoners.length; i++){
+               if(prisoners.N === kill){
+                 prisoners.splice(i, 1);
+                 k += 2;
+               }
+           }
+      }
+
+}
+
 
 
 
