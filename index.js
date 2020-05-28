@@ -566,3 +566,21 @@ function mult(strNum1, strNum2) {
 }
 
 
+// Rosetta Code: Fibonacci sequence
+// Take first three terms as 1, 1 and 2
+// Needs to be optimized
+// Try using recursion though it is slow
+
+function fibonacci(n) {
+  const cache = [0,1,1];
+  if(n < 3){
+      return cache[n];
+  };
+  while(cache.length <= n){
+    const len = cache.length;
+    cache.push(cache[len - 1] + cache[len - 2]);
+  };
+  return cache[cache.length - 1];
+ };
+ 
+
