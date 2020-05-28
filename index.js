@@ -583,4 +583,15 @@ function fibonacci(n) {
   return cache[cache.length - 1];
  };
  
+ //Rosetta Code: Longest string challenge
+ function longestString(strings) {
+  let max = 0;
+  strings.forEach( val => {
+    if(val.length > max){
+        max = val.length;
+    };
+  });
+  return strings.filter(val => val.length === max);
+};
+
 
