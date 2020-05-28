@@ -594,4 +594,26 @@ function fibonacci(n) {
   return strings.filter(val => val.length === max);
 };
 
+// Rosetta Code: FizzBuzz
+function fizzBuzz() {
+  const arr = [];
+  for(let i = 1; i < 101; i++){
+      if(i % 3 === 0 && i % 5 === 0){
+          arr.push('FizzBuzz');
+          continue;
+      }
+      else if(i % 3 === 0){
+         arr.push('Fizz');
+         continue;
+      }
+      else if (i % 5 === 0){
+        arr.push('Buzz');
+        continue;
+      };
+      arr.push(i);
+  };
+  return arr;
+};
+
+
 
