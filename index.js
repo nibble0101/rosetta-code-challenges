@@ -615,5 +615,19 @@ function fizzBuzz() {
   return arr;
 };
 
+//Rosetta Code: JortSort
+//Array.prototype.sort() sorts array in place and returns the sorted array
+// Clone the original array and sort in place before comparing
+function jortsort(array) {
+  const clone = [...array].sort((a, b) => a - b);
+  for(let i = 0; i < array.length; i++){
+      if(array[i] !== clone[i]){
+          return false;
+      };
+  };
+  return true;
+};
+
+
 
 
