@@ -655,6 +655,22 @@ function beadSort(arr) {
   return returnArr;
 }
 
+
+//Rosetta Code: Iterated digits squaring
+function iteratedSquare(n) {
+  while(true){
+      if(n === 1 || n === 89){
+        break;
+      };
+      n = n.toString().split('').reduce((prev, curr) => {
+      return +prev + (+curr) ** 2;
+      }, 0);
+      
+  };
+  return n;
+};
+
+
 //Rosetta Code: Josephus problem
 // Solution incomplete
 
