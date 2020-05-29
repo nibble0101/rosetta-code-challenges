@@ -628,6 +628,34 @@ function jortsort(array) {
   return true;
 };
 
+
+//Rosetta Code: Sorting algorithms/Bead sort
+// This doesn't sort in place. Implement the same algorithm modifying the input array
+// https://en.wikipedia.org/wiki/Bead_sort
+//https://mathworld.wolfram.com/Bead-Sort.html
+function beadSort(arr) {
+  const poles = new Array(Math.max(...arr)).fill(0),
+        returnArr = [];
+  for(const e of arr){
+      for(let i = 0; i < e; i++){
+          poles[i] += 1;
+      };
+  };
+  for(let i = arr.length; i > 0; i--){ 
+      let c = 0;
+      for(let j = 0; j < poles.length; j++){
+          if(poles[j] === i){
+              c += 1;
+              poles[j]--;
+          };
+      };
+      returnArr.push(c)       
+  }
+  return returnArr;
+};
+
+
+
 //Rosetta Code: Josephus problem
 // Solution incomplete
 
