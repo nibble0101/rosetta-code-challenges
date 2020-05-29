@@ -648,6 +648,37 @@ function josephus(init, kill) {
 
 }
 
+//Rosetta Code: Last letter-first letter
+//Solution incorrect. Doesn't take into consideration words starting with same letter
+
+function findLongestChain(items) {
+  
+  const final = [];
+  let longest = 0;
+  for(let i = 0; i < items.length; i++){
+     const clone = [...items];
+     clone.splice(i, 1);
+     const arr = [items[i]];
+     for(let j = 0; j < clone.length; j++){
+         let currWord = arr[arr.length - 1];
+         let nextWord = clone[j];
+         let lastLetter = currWord[currWord.length - 1];
+         let firstLetter = nextWord[0];
+         if(lastLetter === firstLetter){
+             arr.push(nextWord);
+             clone.splice(j, 1);
+             j = -1;
+         };
+     };
+     final.push(arr);
+     if(arr.length > longest){
+         longest = arr.length;
+      }
+  }
+  
+  return final.find(v => v.length === longest);
+}
+
 
 
 
