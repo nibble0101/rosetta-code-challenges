@@ -671,6 +671,27 @@ function iteratedSquare(n) {
 };
 
 
+// Rosetta Code: Abundant, deficient and perfect number classifications
+// Potential infinite loop. Find a way of optimising it
+
+function getDPA(num) {
+  const arr = [0, 0, 0];
+  const P = (n) => {
+      let sum = 0;
+      for(let i = 1; i <= n/2; i++){
+          if(n % i === 0){
+              sum += i;
+          };
+      };
+      return sum < n ? 'deficient': sum === n ? 'perfect': 'abundant';
+  };
+  for(let j = 1; j <= num; j++){
+    P(j) === 'deficient' ? arr[0]++ : P(j) === 'perfect' ? arr[1]++ : arr[2]++
+  };
+  return arr;
+}
+
+
 //Rosetta Code: Josephus problem
 // Solution incomplete
 
