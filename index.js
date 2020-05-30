@@ -670,9 +670,20 @@ function iteratedSquare(n) {
   return n;
 };
 
+//Rosetta Code: Deepcopy
+// Though the solutions below pass the tests, they don't do a deep copy of an object
+// Read more about deep copy at:
+//https://flaviocopes.com/how-to-clone-javascript-object/
 
+function deepcopy(obj) {
+  return Object.assign({}, obj);
+};
+
+function deepcopy(obj) {
+  return {...obj};
+};
 // Rosetta Code: Abundant, deficient and perfect number classifications
-// Potential infinite loop. Find a way of optimising it
+// Potential infinite loop according to FCC test. Find a way of optimising it
 
 function getDPA(num) {
   const arr = [0, 0, 0];
