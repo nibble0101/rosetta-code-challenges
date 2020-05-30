@@ -763,3 +763,15 @@ function findLongestChain(items) {
 
   return final.find((v) => v.length === longest);
 }
+
+//Rosetta Code: Word wrap
+//This solution is incorrect
+
+function wrap(text, limit) {
+  let lines = Math.ceil(text.length/limit), str = '';    
+  for(let i = 1; i <= lines; i++){
+      str += text.slice((i - 1 ) * limit, i * limit) + '\n'
+  };
+  return str;
+};
+
