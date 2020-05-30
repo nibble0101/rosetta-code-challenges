@@ -684,6 +684,21 @@ function deepcopy(obj) {
   return {...obj};
 };
 
+//Rosetta Code: Sort disjoint sublist
+//Find another way of solving the challenge though this solution is correct
+function sortDisjoint(values, indices) {
+  const arr = [];
+  for(const e of indices){
+      arr.push(values[e])
+  }
+  indices.sort((a, b) => a - b);
+  arr.sort((a, b) => a - b);
+  for(let i = 0; i < indices.length; i++){
+      values[indices[i]] = arr[i];
+  }
+  return values;
+}
+
 
 //Rosetta Code: Sort an array of composite structures
 // Find a way of sorting without using Array.prototype.sort
