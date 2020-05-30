@@ -710,6 +710,30 @@ function josephus(init, kill) {
   }
 }
 
+//Rosetta Code: Vector dot product
+//This solution appears to be incorrect though it passess the tests
+
+function dotProduct(...vectors) {
+  if(!vectors.length){
+      return null;
+  }
+  
+  const acc = new Array(vectors[0].length).fill(1);
+ 
+  for(let i = 0; i < vectors.length; i++){
+      for(let k = 0; k < vectors[i].length; k++){
+          acc[k] *= vectors[i][k];
+      };
+  };
+
+  const sum = acc.reduce((prev, curr) => prev + curr, 0);
+  if(isNaN(sum)){
+      return null;
+  };
+  return sum;
+};
+
+
 //Rosetta Code: Last letter-first letter
 //Solution incorrect. Doesn't take into consideration words starting with same letter
 
