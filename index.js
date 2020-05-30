@@ -683,6 +683,15 @@ function deepcopy(obj) {
 function deepcopy(obj) {
   return {...obj};
 };
+
+
+//Rosetta Code: Sort an array of composite structures
+// Find a way of sorting without using Array.prototype.sort
+
+function sortByKey(arr) {
+  return arr.sort((a, b) => a.key - b.key);
+};
+
 // Rosetta Code: Abundant, deficient and perfect number classifications
 // Potential infinite loop according to FCC test. Find a way of optimising it
 
