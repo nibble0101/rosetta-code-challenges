@@ -674,6 +674,7 @@ function iteratedSquare(n) {
 // Though the solutions below pass the tests, they don't do a deep copy of an object
 // Read more about deep copy at:
 //https://flaviocopes.com/how-to-clone-javascript-object/
+//https://stackoverflow.com/questions/122102
 
 function deepcopy(obj) {
   return Object.assign({}, obj);
