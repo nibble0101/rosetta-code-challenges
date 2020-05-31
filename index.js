@@ -724,6 +724,23 @@ function lookAndSay(str) {
   return ans;
 };
 
+//Rosetta Code: Element-wise operations
+// Challenge description isn't clear about scalar-matrix operation
+// Not all tests are passing
+
+function operation(op, arr1, arr2) {
+  op = op === 'm_add' ? '+' : 
+       op === 'm_sub' ? '-' :
+       op === 'm_mult' ? '*':
+       op === 'm_div' ? '/': '**'
+   return arr1.map((v, i) => {
+         return v.map((w, j) => {
+              return eval( w + op + arr2[i][j]);
+          });
+      });
+};
+
+
 //Rosetta Code: Split a character string based on change of character
 
 function split(str) {
