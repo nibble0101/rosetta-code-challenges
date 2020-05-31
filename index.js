@@ -707,6 +707,25 @@ function sortByKey(arr) {
   return arr.sort((a, b) => a.key - b.key);
 };
 
+//Rosetta Code: Split a character string based on change of character
+
+function split(str) {
+  let arr = [], i = 0;
+  while(i < str.length){
+      let sub = str[i], j;
+      inner:for(j = i + 1; j < str.length; j++){
+          if(sub[0] !== str[j]){
+             break inner;   
+          };
+          sub += str[j];      
+      };
+      arr.push(sub);
+      i = j;
+  };
+  return arr;
+};
+
+
 // Rosetta Code: Abundant, deficient and perfect number classifications
 // Potential infinite loop according to FCC test. Find a way of optimising it
 
@@ -810,4 +829,19 @@ function wrap(text, limit) {
   };
   return str;
 };
+
+//Rosetta Code: Date manipulation
+//This solution doesn't handle day change therefore incorrect
+
+function add12Hours(dateString) {
+  let [m, d, y, t, z] = dateString.split(' ');
+  m = new Date(Date.parse(m + ' 1, 2020')).getMonth();
+  let min = parseInt(t.split(':')[0], 10)
+  let sec = parseInt(t.split(':')[1], 10)
+  let date = new Date(+y, m, +d, min, sec);
+  date = new Date(date.getTime() + 12 * 60 * 60 * 1000)
+ 
+}
+
+
 
