@@ -547,27 +547,54 @@ function isHarshadOrNiven() {
 }
 
 //Rosetta Code: Long multiplication
-// Solution is incomplete
+// Optimise this code
 function mult(strNum1, strNum2) {
   const a = strNum1,
-    b = strNum2;
+         b = strNum2;
   let r = 0,
-    q = 0,
-    arr = [];
+      q = 0,
+    arr = []; //Product store
   for (let i = b.length - 1; i >= 0; i--) {
     const str = "";
+    //Shifts first digit of product to appropriate position
+    str = str.padEnd(b.length - 1 - i, '0')
     for (let j = a.length - 1; j >= 0; j--) {
       const pdt = +b[i] * +a[j] + q;
       r = pdt % 10;
       q = Math.floor(pdt / 10);
       if (j === 0) {
         str = pdt + str;
+        //Sets quotient and remainder to 0 after multiplying first number
+        //by a digit of the second number
+        r = 0;
+        q = 0;
       } else {
         str = r + str;
       }
     }
     arr.push(str);
   }
+  //r: remainder, q:quotient
+  r = 0; q = 0; let ans = '', lastStr = arr[arr.length - 1];
+  for(let j = lastStr.length - 1; j >= 0; j--){
+      let sum = q;
+      arr.forEach((v, i) => {
+          if(v.length < lastStr.length){
+              v = v.padStart(lastStr.length, '0'); 
+              //Makes all products same length  
+          }
+          sum += +v[j];
+      })
+      r = sum % 10;
+      q = Math.floor(sum/10);
+      if(j === 0){
+        ans = sum + ans; //Not sum += ans
+      }else{
+        ans = r + ans;
+          
+      }
+  }
+    return ans;
 }
 
 // Rosetta Code: Fibonacci sequence
