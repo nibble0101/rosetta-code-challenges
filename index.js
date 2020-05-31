@@ -707,6 +707,23 @@ function sortByKey(arr) {
   return arr.sort((a, b) => a.key - b.key);
 };
 
+//Rosetta Code: Look-and-say sequence
+function lookAndSay(str) {
+  let ans = '', i = 0;
+  while(i < str.length){
+      let sub = str[i], j = i + 1;
+      inner:for(j; j < str.length; j++){
+        if(sub[0] !== str[j]){
+          break inner;
+        };
+        sub += str[j];
+      }
+      ans += sub.length + sub[0];
+      i = j;
+  };
+  return ans;
+};
+
 //Rosetta Code: Split a character string based on change of character
 
 function split(str) {
