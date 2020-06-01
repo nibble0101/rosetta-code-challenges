@@ -546,18 +546,31 @@ function isHarshadOrNiven() {
   return res;
 }
 
+//Rosetta Code: Lychrel numbers
+// Solution is incorrect
+
+function isLychrel(n) {
+  for (let i = 1; i <= 500; i++) {
+    n = n + +n.toString().split("").reverse().join("");
+    if (n.toString() === n.toString().split("").reverse().join("")) {
+      return true;
+    }
+  }
+  return false;
+}
+
 //Rosetta Code: Long multiplication
 // Optimise this code
 function mult(strNum1, strNum2) {
   const a = strNum1,
-         b = strNum2;
+    b = strNum2;
   let r = 0,
-      q = 0,
+    q = 0,
     arr = []; //Product store
   for (let i = b.length - 1; i >= 0; i--) {
     const str = "";
     //Shifts first digit of product to appropriate position
-    str = str.padEnd(b.length - 1 - i, '0')
+    str = str.padEnd(b.length - 1 - i, "0");
     for (let j = a.length - 1; j >= 0; j--) {
       const pdt = +b[i] * +a[j] + q;
       r = pdt % 10;
@@ -575,26 +588,28 @@ function mult(strNum1, strNum2) {
     arr.push(str);
   }
   //r: remainder, q:quotient
-  r = 0; q = 0; let ans = '', lastStr = arr[arr.length - 1];
-  for(let j = lastStr.length - 1; j >= 0; j--){
-      let sum = q;
-      arr.forEach((v, i) => {
-          if(v.length < lastStr.length){
-              v = v.padStart(lastStr.length, '0'); 
-              //Makes all products same length  
-          }
-          sum += +v[j];
-      })
-      r = sum % 10;
-      q = Math.floor(sum/10);
-      if(j === 0){
-        ans = sum + ans; //Not sum += ans
-      }else{
-        ans = r + ans;
-          
+  r = 0;
+  q = 0;
+  let ans = "",
+    lastStr = arr[arr.length - 1];
+  for (let j = lastStr.length - 1; j >= 0; j--) {
+    let sum = q;
+    arr.forEach((v, i) => {
+      if (v.length < lastStr.length) {
+        v = v.padStart(lastStr.length, "0");
+        //Makes all products same length
       }
+      sum += +v[j];
+    });
+    r = sum % 10;
+    q = Math.floor(sum / 10);
+    if (j === 0) {
+      ans = sum + ans; //Not sum += ans
+    } else {
+      ans = r + ans;
+    }
   }
-    return ans;
+  return ans;
 }
 
 // Rosetta Code: Fibonacci sequence
@@ -682,20 +697,21 @@ function beadSort(arr) {
   return returnArr;
 }
 
-
 //Rosetta Code: Iterated digits squaring
 function iteratedSquare(n) {
-  while(true){
-      if(n === 1 || n === 89){
-        break;
-      };
-      n = n.toString().split('').reduce((prev, curr) => {
-      return +prev + (+curr) ** 2;
+  while (true) {
+    if (n === 1 || n === 89) {
+      break;
+    }
+    n = n
+      .toString()
+      .split("")
+      .reduce((prev, curr) => {
+        return +prev + (+curr) ** 2;
       }, 0);
-      
-  };
+  }
   return n;
-};
+}
 
 //Rosetta Code: Deepcopy
 // Though the solutions below pass the tests, they don't do a deep copy of an object
@@ -705,87 +721,94 @@ function iteratedSquare(n) {
 
 function deepcopy(obj) {
   return Object.assign({}, obj);
-};
+}
 
 function deepcopy(obj) {
-  return {...obj};
-};
+  return { ...obj };
+}
 
 //Rosetta Code: Sort disjoint sublist
 //Find another way of solving the challenge though this solution is correct
 function sortDisjoint(values, indices) {
   const arr = [];
-  for(const e of indices){
-      arr.push(values[e])
+  for (const e of indices) {
+    arr.push(values[e]);
   }
   indices.sort((a, b) => a - b);
   arr.sort((a, b) => a - b);
-  for(let i = 0; i < indices.length; i++){
-      values[indices[i]] = arr[i];
+  for (let i = 0; i < indices.length; i++) {
+    values[indices[i]] = arr[i];
   }
   return values;
 }
-
 
 //Rosetta Code: Sort an array of composite structures
 // Find a way of sorting without using Array.prototype.sort
 
 function sortByKey(arr) {
   return arr.sort((a, b) => a.key - b.key);
-};
+}
 
 //Rosetta Code: Look-and-say sequence
 function lookAndSay(str) {
-  let ans = '', i = 0;
-  while(i < str.length){
-      let sub = str[i], j = i + 1;
-      inner:for(j; j < str.length; j++){
-        if(sub[0] !== str[j]){
-          break inner;
-        };
-        sub += str[j];
+  let ans = "",
+    i = 0;
+  while (i < str.length) {
+    let sub = str[i],
+      j = i + 1;
+    inner: for (j; j < str.length; j++) {
+      if (sub[0] !== str[j]) {
+        break inner;
       }
-      ans += sub.length + sub[0];
-      i = j;
-  };
+      sub += str[j];
+    }
+    ans += sub.length + sub[0];
+    i = j;
+  }
   return ans;
-};
+}
 
 //Rosetta Code: Element-wise operations
 // Challenge description isn't clear about scalar-matrix operation
 // Not all tests are passing
 
 function operation(op, arr1, arr2) {
-  op = op === 'm_add' ? '+' : 
-       op === 'm_sub' ? '-' :
-       op === 'm_mult' ? '*':
-       op === 'm_div' ? '/': '**'
-   return arr1.map((v, i) => {
-         return v.map((w, j) => {
-              return eval( w + op + arr2[i][j]);
-          });
-      });
-};
-
+  op =
+    op === "m_add"
+      ? "+"
+      : op === "m_sub"
+      ? "-"
+      : op === "m_mult"
+      ? "*"
+      : op === "m_div"
+      ? "/"
+      : "**";
+  return arr1.map((v, i) => {
+    return v.map((w, j) => {
+      return eval(w + op + arr2[i][j]);
+    });
+  });
+}
 
 //Rosetta Code: Split a character string based on change of character
 
 function split(str) {
-  let arr = [], i = 0;
-  while(i < str.length){
-      let sub = str[i], j;
-      inner:for(j = i + 1; j < str.length; j++){
-          if(sub[0] !== str[j]){
-             break inner;   
-          };
-          sub += str[j];      
-      };
-      arr.push(sub);
-      i = j;
-  };
+  let arr = [],
+    i = 0;
+  while (i < str.length) {
+    let sub = str[i],
+      j;
+    inner: for (j = i + 1; j < str.length; j++) {
+      if (sub[0] !== str[j]) {
+        break inner;
+      }
+      sub += str[j];
+    }
+    arr.push(sub);
+    i = j;
+  }
   return arr;
-};
-
+}
 
 // Rosetta Code: Abundant, deficient and perfect number classifications
 // Potential infinite loop according to FCC test. Find a way of optimising it
@@ -793,20 +816,19 @@ function split(str) {
 function getDPA(num) {
   const arr = [0, 0, 0];
   const P = (n) => {
-      let sum = 0;
-      for(let i = 1; i <= n/2; i++){
-          if(n % i === 0){
-              sum += i;
-          };
-      };
-      return sum < n ? 'deficient': sum === n ? 'perfect': 'abundant';
+    let sum = 0;
+    for (let i = 1; i <= n / 2; i++) {
+      if (n % i === 0) {
+        sum += i;
+      }
+    }
+    return sum < n ? "deficient" : sum === n ? "perfect" : "abundant";
   };
-  for(let j = 1; j <= num; j++){
-    P(j) === 'deficient' ? arr[0]++ : P(j) === 'perfect' ? arr[1]++ : arr[2]++
-  };
+  for (let j = 1; j <= num; j++) {
+    P(j) === "deficient" ? arr[0]++ : P(j) === "perfect" ? arr[1]++ : arr[2]++;
+  }
   return arr;
 }
-
 
 //Rosetta Code: Josephus problem
 // Solution incomplete
@@ -830,25 +852,24 @@ function josephus(init, kill) {
 //This solution appears to be incorrect though it passess the tests
 
 function dotProduct(...vectors) {
-  if(!vectors.length){
-      return null;
+  if (!vectors.length) {
+    return null;
   }
-  
+
   const acc = new Array(vectors[0].length).fill(1);
- 
-  for(let i = 0; i < vectors.length; i++){
-      for(let k = 0; k < vectors[i].length; k++){
-          acc[k] *= vectors[i][k];
-      };
-  };
+
+  for (let i = 0; i < vectors.length; i++) {
+    for (let k = 0; k < vectors[i].length; k++) {
+      acc[k] *= vectors[i][k];
+    }
+  }
 
   const sum = acc.reduce((prev, curr) => prev + curr, 0);
-  if(isNaN(sum)){
-      return null;
-  };
+  if (isNaN(sum)) {
+    return null;
+  }
   return sum;
-};
-
+}
 
 //Rosetta Code: Last letter-first letter
 //Solution incorrect. Doesn't take into consideration words starting with same letter
@@ -884,25 +905,22 @@ function findLongestChain(items) {
 //This solution is incorrect
 
 function wrap(text, limit) {
-  let lines = Math.ceil(text.length/limit), str = '';    
-  for(let i = 1; i <= lines; i++){
-      str += text.slice((i - 1 ) * limit, i * limit) + '\n'
-  };
+  let lines = Math.ceil(text.length / limit),
+    str = "";
+  for (let i = 1; i <= lines; i++) {
+    str += text.slice((i - 1) * limit, i * limit) + "\n";
+  }
   return str;
-};
+}
 
 //Rosetta Code: Date manipulation
 //This solution doesn't handle day change therefore incorrect
 
 function add12Hours(dateString) {
-  let [m, d, y, t, z] = dateString.split(' ');
-  m = new Date(Date.parse(m + ' 1, 2020')).getMonth();
-  let min = parseInt(t.split(':')[0], 10)
-  let sec = parseInt(t.split(':')[1], 10)
+  let [m, d, y, t, z] = dateString.split(" ");
+  m = new Date(Date.parse(m + " 1, 2020")).getMonth();
+  let min = parseInt(t.split(":")[0], 10);
+  let sec = parseInt(t.split(":")[1], 10);
   let date = new Date(+y, m, +d, min, sec);
-  date = new Date(date.getTime() + 12 * 60 * 60 * 1000)
- 
+  date = new Date(date.getTime() + 12 * 60 * 60 * 1000);
 }
-
-
-
