@@ -768,6 +768,49 @@ function lookAndSay(str) {
   return ans;
 }
 
+// Rosetta Code: Circles of given radius through two points
+// Read more about how to solve this challenge at:
+//http://mathforum.org/library/drmath/view/53027.html#:~:text=The%20distance%20between%20(x1%2C%20y1,point%20we're%20looking%20for.
+
+function getCircles(...args) {
+  if (!args[2]) {
+    return "Radius Zero";
+  }
+  const {
+    0: { 0: x1, 1: y1 },
+    1: { 0: x2, 1: y2 },
+    2: radius,
+  } = args;
+  const distanceApart = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+  if (distanceApart > radius * 2) {
+    return "No intersection. Points further apart than circle diameter";
+  } else if (distanceApart === radius * 2) {
+    return [(x1 + x2) / 2, (y1 + y2) / 2];
+  }
+  if (x1 === x2 && y1 === y2) {
+    return "Coincident point. Infinite solutions";
+  }
+  //Normalized Mirror Line directions
+  const xDirection = (y1 - y2) / distanceApart;
+  const yDirection = (x2 - x1) / distanceApart;
+  //Heigth of center above mid-point of Line joining points 1 and 2
+  const height = Math.sqrt(radius ** 2 - (distanceApart / 2) ** 2);
+  const c1x = (x1 + x2) / 2 + height * xDirection;
+  const c1y = (y1 + y2) / 2 + height * yDirection;
+  const c2x = (x1 + x2) / 2 - height * xDirection;
+  const c2y = (y1 + y2) / 2 - height * yDirection;
+  return [
+    [
+      Math.round(c1x * 10000, c1y * 10000) / 10000,
+      Math.round(c1y * 10000, c1y * 10000) / 10000,
+    ],
+    [
+      Math.round(c2x * 10000, c2y * 10000) / 10000,
+      Math.round(c2y * 10000, c2y * 10000) / 10000,
+    ],
+  ];
+}
+
 //Rosetta Code: Element-wise operations
 // Challenge description isn't clear about scalar-matrix operation
 // Not all tests are passing
