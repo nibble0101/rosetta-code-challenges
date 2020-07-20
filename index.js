@@ -811,6 +811,20 @@ function getCircles(...args) {
   ];
 }
 
+// Rosetta Code: Babbage problem
+
+function babbage(babbageNum, endDigits) {
+    let flag = true;
+    let i = 100; // Math.sqrt(269696) = 519.3226357477594;
+    while(flag){
+      if(+(i * i).toString().slice(-6) === endDigits){
+         return i
+      }
+      i++
+    }
+  }
+  
+
 //Rosetta Code: Element-wise operations
 // Challenge description isn't clear about scalar-matrix operation
 // Not all tests are passing
