@@ -749,6 +749,15 @@ function sortByKey(arr) {
   return arr.sort((a, b) => a.key - b.key);
 }
 
+//Rosetta Code: Accumulator factory
+
+function accumulator(sum) {
+    return function(arg){
+      return sum += arg;
+    }
+  }
+  
+
 //Rosetta Code: Look-and-say sequence
 function lookAndSay(str) {
   let ans = "",
