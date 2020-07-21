@@ -752,11 +752,21 @@ function sortByKey(arr) {
 //Rosetta Code: Accumulator factory
 
 function accumulator(sum) {
-    return function(arg){
-      return sum += arg;
+  return function (arg) {
+    return (sum += arg);
+  };
+}
+
+//Rosetta Code: General FizzBuzz
+function genFizzBuzz(rules, num) {
+  let result = "";
+  rules.forEach((rule) => {
+    if (!(num % rule[0])) {
+      result += rule[1];
     }
-  }
-  
+  });
+  return result ? result : result + num;
+}
 
 //Rosetta Code: Look-and-say sequence
 function lookAndSay(str) {
@@ -823,16 +833,15 @@ function getCircles(...args) {
 // Rosetta Code: Babbage problem
 
 function babbage(babbageNum, endDigits) {
-    let flag = true;
-    let i = 100; // Math.sqrt(269696) = 519.3226357477594;
-    while(flag){
-      if(+(i * i).toString().slice(-6) === endDigits){
-         return i
-      }
-      i++
+  let flag = true;
+  let i = 100; // Math.sqrt(269696) = 519.3226357477594;
+  while (flag) {
+    if (+(i * i).toString().slice(-6) === endDigits) {
+      return i;
     }
+    i++;
   }
-  
+}
 
 //Rosetta Code: Element-wise operations
 // Challenge description isn't clear about scalar-matrix operation
