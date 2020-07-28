@@ -833,35 +833,54 @@ function getCircles(...args) {
 // Rosetta Code: CUSIP
 
 function isCusip(s) {
-    if(s.length < 8){
-      return false;
-    }
-    const len = s.length, lastChar = s[len - 1];
-    let sum = 0;
-    for(let i = 0; i < len - 2; i++){
-       let c, char = s[i];
-       if(Number.isInteger(+char)){
-           c = +char;
-       }else if(char.length === 1 && char.match(/[a-z]/i)){
-           c = (char.toLowerCase().charCodeAt(0) - 96) + 9;
-       }else if(char === "*"){
-         c = 36
-       }else if(char === "@"){
-         c = 37
-       }else if(char === "#"){
-         c = 38
-       }
-       if((i + 1) % 2 === 0){
-         c = c * 2;
-       }
-       sum += Math.floor(c/10) + c % 10;
-    }
-    
-    return (10 - (sum % 10)) % 10 === +lastChar;
+  if (s.length < 8) {
+    return false;
   }
-  
-  
+  const len = s.length,
+    lastChar = s[len - 1];
+  let sum = 0;
+  for (let i = 0; i < len - 2; i++) {
+    let c,
+      char = s[i];
+    if (Number.isInteger(+char)) {
+      c = +char;
+    } else if (char.length === 1 && char.match(/[a-z]/i)) {
+      c = char.toLowerCase().charCodeAt(0) - 96 + 9;
+    } else if (char === "*") {
+      c = 36;
+    } else if (char === "@") {
+      c = 37;
+    } else if (char === "#") {
+      c = 38;
+    }
+    if ((i + 1) % 2 === 0) {
+      c = c * 2;
+    }
+    sum += Math.floor(c / 10) + (c % 10);
+  }
 
+  return (10 - (sum % 10)) % 10 === +lastChar;
+}
+
+//Rosetta Code: Equilibrium index
+
+function equilibrium(a) {
+  const eqIndices = [];
+  for (let i = 0; i < a.length; i++) {
+    const first = a.slice(0, i);
+    const second = a.slice(i + 1);
+    const sumFirst = first.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+    const sumSecond = second.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+    if (sumFirst === sumSecond) {
+      eqIndices.push(i);
+    }
+  }
+  return eqIndices;
+}
 
 // Rosetta Code: Babbage problem
 
