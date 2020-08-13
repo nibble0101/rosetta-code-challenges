@@ -568,6 +568,34 @@ function idMatrix(n) {
   });
 };
 
+//Rosetta Code: Greatest subsequential sum
+//This solution doesn't pass all the tests
+//If population has multiple subsequences with maximum total, it fails
+// FCC only accepts the first occurrence of  sequences 
+function maximumSubsequence(population) {
+    const length = population.length;
+    let answer = population[0], sum = answer;
+    for(let step = 1; step <= length; step++){
+        innerLoop:
+        for(let from = 0; from < length; from++){
+            if((from + step) > length){
+              break innerLoop;
+            }
+            const subPopulation = population.slice(from, from + step);
+            const total = subPopulation.reduce((cummulative, current) => {
+                  return cummulative + current;
+            }, 0);
+            if(total > sum){
+              sum = total;
+              answer = [...subPopulation];
+            }
+        }
+    }
+    return [...answer];
+  }
+ 
+  
+  
 
 //Rosetta Code: Long multiplication
 // Optimise this code
