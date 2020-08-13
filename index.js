@@ -559,6 +559,16 @@ function isLychrel(n) {
   return false;
 }
 
+//Rosetta Code: Identity matrix
+function idMatrix(n) {
+  return new Array(n).fill(0).map((_, index)=> {
+        const row = new Array(n).fill(0);
+        row[index] = 1;
+        return row;
+  });
+};
+
+
 //Rosetta Code: Long multiplication
 // Optimise this code
 function mult(strNum1, strNum2) {
