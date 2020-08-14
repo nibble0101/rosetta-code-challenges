@@ -955,6 +955,42 @@ function operation(op, arr1, arr2) {
   });
 }
 
+//Rosetta Code: Amicable pairs
+// This solution needs optimising
+//Fcc gives a warning of potential infinite loop warning
+function amicablePairsUpTo(maxNum) {
+    function sumProperDivisors(n){
+    let sum = 0
+    const arr = [], max = Math.floor(Math.sqrt(n));
+    for(let i = 1; i <= max; i++){
+        if(n % i === 0){
+          const j = n / i;
+          sum += i
+          if( i !== j && j !== n){
+            sum += j
+          }
+  
+        }
+    }
+    return sum;
+  }
+  const pairs = [];
+  for(let i = 1; i < maxNum; i++){
+  
+    const a = sumProperDivisors(i);
+    const b = sumProperDivisors(a);
+    if(i === b && a !== b && a < b){
+      pairs.push([a, b]);
+    }
+  }
+   
+    return [...pairs];
+  }
+  
+   
+  
+  
+
 //Rosetta Code: Split a character string based on change of character
 
 function split(str) {
