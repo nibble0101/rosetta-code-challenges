@@ -957,7 +957,7 @@ function operation(op, arr1, arr2) {
 
 //Rosetta Code: Amicable pairs
 // This solution needs optimising
-//Fcc gives a warning of potential infinite loop warning
+//Fcc gives potential infinite loop warning
 function amicablePairsUpTo(maxNum) {
     function sumProperDivisors(n){
     let sum = 0
