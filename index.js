@@ -594,7 +594,24 @@ function maximumSubsequence(population) {
     return [...answer];
   }
  
-  
+  //Rosetta Code: Euler method
+  // Take note this problem has noot been adequately described on FCC.
+
+  function eulersMethod(t0, T0, t1, h) {
+    // T0 is initial temperature at time t0
+    // h step size
+    // Find temperature at t1
+    const findCoolingRate = (temp) => -0.07 * (temp - 20);
+    let coolingRate = findCoolingRate(T0);
+    t0 += h;
+    while(t0 <= t1){
+         T0 = T0 + h * coolingRate;
+        coolingRate = findCoolingRate(T0);
+        t0 += h;
+    }
+   
+   return T0
+}
   
 
 //Rosetta Code: Long multiplication
