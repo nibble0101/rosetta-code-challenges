@@ -29,6 +29,21 @@ function dotProduct(...arr) {
   }
   return tot;
 }
+
+//Rosetta Code: Comma quibbling
+
+function quibble(words) {
+  if (!words.length) return `{}`;
+  if (words.length === 1) return `{${words[0]}}`;
+  if (words.length === 2) {
+    words.splice(1, 0, "and");
+    return `{${words.join(" ")}}`;
+  }
+  let lastWord = words.pop();
+  return `{${words.join(",")} and ${lastWord}}`;
+}
+
+
 // Rosetta Code: Factorial
 
 function factorial(n) {
