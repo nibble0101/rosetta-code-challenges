@@ -31,6 +31,7 @@ function dotProduct(...arr) {
 }
 
 //Rosetta Code: Comma quibbling
+// This challenge has formatting issues on FCC site
 
 function quibble(words) {
   if (!words.length) return `{}`;
@@ -42,6 +43,25 @@ function quibble(words) {
   let lastWord = words.pop();
   return `{${words.join(",")} and ${lastWord}}`;
 }
+
+//Rosetta Code: Word frequency
+
+function wordFrequency(txt, n) {
+    if (!txt) return [];
+    txt = txt.split(" ");
+    let words = {}, length = txt.length;
+    for (let i = 0; i < length; i++) {
+        const word = txt[i].toLowerCase();
+        if (words[word]) {
+            words[word] += 1;
+            continue;
+        };
+        words[word] = 1;
+    };
+    words = Object.entries(words);
+    words.sort((a, b) => b[1] - a[1]);
+    return words.slice(0, n);
+};
 
 
 // Rosetta Code: Factorial
